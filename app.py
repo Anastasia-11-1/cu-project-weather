@@ -6,20 +6,15 @@ import plotly.graph_objs as go
 from weather_api import (
     get_city_coordinates,
     get_weather_data,
-    # check_bad_weather,
-    # get_forecast,
-    # get_location_key
 )
 
-# Flask app initialization
 app = Flask(__name__)
 bp = Blueprint('weather', __name__, url_prefix='/weather')
 app.register_blueprint(bp)
 
-# Dash app integration
 dash_app = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
 
-cities = []  # List of cities for the route
+cities = []  
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
